@@ -42,7 +42,7 @@ class MahasiswaController extends Controller
         $mahasiswa->Nama = $request->input('Nama');
         $mahasiswa->email = $request->input('email');
         $mahasiswa->save();
-        return response()->json($mahasiswa);
+       
 
     }
 
@@ -83,7 +83,7 @@ class MahasiswaController extends Controller
         $mahasiswa->Nama = $request->input('Nama'); 
         $mahasiswa->email = $request->input('email');
         $mahasiswa->save();
-        return response()->json('update success'); 
+       
     }
 
     /**
@@ -96,6 +96,6 @@ class MahasiswaController extends Controller
     {
         $mahasiswa = Mahasiswa::find($id);
         $mahasiswa->delete();
-        return response()->json('Delete Success');
+        
     }
 }
