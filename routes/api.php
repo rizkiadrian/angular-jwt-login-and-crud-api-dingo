@@ -12,12 +12,15 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods:  POST, GET, OPTIONS, PUT, DELETE');
 header( 'Access-Control-Allow-Headers: Authorization, Content-Type' );
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
 $api = app('Dingo\Api\Routing\Router');
 $api->version('v1', function ($api) {
+$api->resource('images', 'App\Http\Controllers\imageController\imageController');
 $api->resource('mahasiswa', 'App\Http\Controllers\Mahasiswa\MahasiswaController');
 $api->resource('authenticate', 'App\Http\Controllers\Auth\AuthenticateController', ['only' => ['index']]);
 $api->post('authenticate', 'App\Http\Controllers\Auth\AuthenticateController@authenticate');

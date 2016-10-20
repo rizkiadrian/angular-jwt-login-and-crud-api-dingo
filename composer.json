@@ -10,7 +10,8 @@
         "dingo/api": "1.0.x@dev",
         "fzaninotto/faker": "^1.6",
         "barryvdh/laravel-cors": "^0.8.2",
-        "tymon/jwt-auth": "0.5.*"
+        "tymon/jwt-auth": "0.5.*",
+        "intervention/image": "^2.3"
     },
     "require-dev": {
         "mockery/mockery": "0.9.*",

@@ -14,12 +14,20 @@ class MahasiswaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index(Request $request)
+   { 
+
+        $input = $request->all();
+        if($request->get('search')){
+        $mahasiswas = Mahasiswa::where("Nama", "LIKE", "%{$request->get('search')}%")
+        ->paginate(5); 
+        return response()->json($mahasiswas);     
+        }else{
         $mahasiswas = Mahasiswa::latest()->paginate(5);
         return response()->json($mahasiswas);
         
     }
+   }
 
     /**
      * Show the form for creating a new resource.
