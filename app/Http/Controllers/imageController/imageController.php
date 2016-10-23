@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\image\image;
 use Imager;
 use File;
+use DB;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Response;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -113,6 +117,18 @@ class imageController extends Controller
         $detail->id . '.' .
         $detail->image_extension);
         $detail->delete();
-        return response()->json('deleted');
+       
+    }
+
+    public function getimage($fileName)
+    {
+        $path = public_path().'/uploadimage/thumbnails/thumb-'.$fileName;
+        return Response::download($path);        
+    }
+
+    public function getoriimage($fileName)
+    {
+        $path = public_path().'/uploadimage/'.$fileName;
+        return Response::download($path);        
     }
 }
